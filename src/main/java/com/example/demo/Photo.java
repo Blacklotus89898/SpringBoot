@@ -14,8 +14,8 @@ public class Photo{
     public String getId() {
         return this.id;
     }
-    public String setId() {
-        return this.id;
+    public void setId(String string) {
+        this.id = string;
     }
     
     public String getFileName() {
