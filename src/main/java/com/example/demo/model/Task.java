@@ -8,20 +8,35 @@ import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Task {
-    
+
     @Id
     private String id;
-    
+
     @NotEmpty
     private String name;
-    
-    private @NotEmpty String status;
-    
-    public enum Status {
-        Created,
-        Completed
-    };
 
+    @NotEmpty
+    private String status;
+
+    // // NEEDS Default constructor for hibernate
+    public Task() {
+        // This is the default (no-argument) constructor
+    }
+
+    public Task(@NotEmpty String name, String status) {
+        this.id = UUID.randomUUID().toString();
+        this.name = name;
+        this.status = status;
+
+    }
+
+    public Task(String id, @NotEmpty String name, String status) {
+        this.id = id;
+        this.name = name;
+        this.status = status;
+    }
+
+    // GETTERS AND SETTERS FOR ALL FIELDS MUST EXIST FOR HIBERNATE TO WORK
     public String getId() {
         return id;
     }
@@ -34,35 +49,15 @@ public class Task {
         return name;
     }
 
-
-    // // NEEDS Default constructor for hibernate
-    public Task() {
-        // This is the default (no-argument) constructor
-    }
-
-    public Task(@NotEmpty String name, @NotEmpty String status) {
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.status = status;
-    
-    }
-
-
-    public Task(String id, @NotEmpty String name, String status) {
-        this.id = id;
-        this.name = name;
-        this.status = status;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    // public Status getStatus() {
-    //     return status;
-    // }
+    public String getStatus() {
+        return this.status;
+    }
 
-    // public void setStatus(Status status) {
-    //     this.status = status;
-    // }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
