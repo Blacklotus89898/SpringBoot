@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.demo.Photo;
+import com.example.demo.model.Photo;
 
 import jakarta.validation.Valid;
 
