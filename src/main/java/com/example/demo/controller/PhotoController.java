@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+
+import com.example.demo.Photo;
 
 import jakarta.validation.Valid;
 

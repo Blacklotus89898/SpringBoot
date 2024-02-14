@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.model.Task;
+import com.example.demo.service.TaskService;
 
 @RestController
 public class TaskController {
