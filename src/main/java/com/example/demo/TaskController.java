@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.demo.model.Task;
+
 @RestController
 public class TaskController {
 
@@ -21,7 +23,8 @@ public class TaskController {
 
     @GetMapping("tasks")
     public Collection<Task> getTasks() {
-        return TaskService.getDb().values();
+        // return TaskService.getDb().values();
+        return TaskService.getAllTasks();
     }
 
     @GetMapping("tasks/{id}")

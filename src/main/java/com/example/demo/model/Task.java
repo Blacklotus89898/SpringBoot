@@ -1,16 +1,21 @@
-package com.example.demo;
+package com.example.demo.model;
 
 import java.util.UUID;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
 
+@Entity
 public class Task {
+    
+    @Id
     private String id;
     
     @NotEmpty
     private String name;
     
-    private @NotEmpty Status status;
+    private @NotEmpty String status;
     
     public enum Status {
         Created,
@@ -29,7 +34,13 @@ public class Task {
         return name;
     }
 
-    public Task(@NotEmpty String name, @NotEmpty Status status) {
+
+    // // NEEDS Default constructor for hibernate
+    public Task() {
+        // This is the default (no-argument) constructor
+    }
+
+    public Task(@NotEmpty String name, @NotEmpty String status) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.status = status;
@@ -37,7 +48,7 @@ public class Task {
     }
 
 
-    public Task(String id, @NotEmpty String name, Status status) {
+    public Task(String id, @NotEmpty String name, String status) {
         this.id = id;
         this.name = name;
         this.status = status;
@@ -47,11 +58,11 @@ public class Task {
         this.name = name;
     }
 
-    public Status getStatus() {
-        return status;
-    }
+    // public Status getStatus() {
+    //     return status;
+    // }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
+    // public void setStatus(Status status) {
+    //     this.status = status;
+    // }
 }
