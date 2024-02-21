@@ -20,7 +20,7 @@ public class TaskService {
     }
 
     public void createTask(Task task) {
-        taskRepository.save(task);
+        taskRepository.save(task); //will need a usecase folder for business logic
     }
 
     public Task getTaskById(String id) {
@@ -29,6 +29,18 @@ public class TaskService {
             return task.get();
         }
         return null;
+    }
+
+    public void updateTaskById(Task task) {
+        Optional<Task> t = taskRepository.findById(task.getId());
+        Task tt = t.get();
+        tt.setName(task.getName());
+        tt.setStatus(task.getStatus());
+        taskRepository.save(tt);
+    }
+
+    public void delteTaskById(String id) {
+        taskRepository.deleteById(id);
     }
 
 }

@@ -12,3 +12,5 @@ public class DemoApplication {
 	}
 
 }
+
+// add auth, uasecase folders, sorting, querying, delete, update, create mutiple tables with fk, migration, perform data sanitation
