@@ -53,7 +53,7 @@ public class TaskController {
         return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
     }
 
-    @GetMapping("tasks/name/{name}")
+    @GetMapping("tasks/{name}")
     public Task getTaskByName(@PathVariable String name) {
         Collection<Task> tasks = TaskService.getAllTasks();
         Task task = null;
@@ -65,6 +65,17 @@ public class TaskController {
         if (task == null)
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         return task;
+    }
+
+    @PostMapping("tasks/update")
+    public ResponseEntity<Task> updateTask(@Valid @RequestBody Task task) {
+        TaskService.updateTaskById(task);
+        Task updatedTask = TaskService.getTaskById(task.getId());
+        if (updatedTask == null) {
+            System.out.printf("Updated task <%s> was not found \n", task.toString());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(updatedTask, HttpStatus.OK);
     }
 
 }
