@@ -8,6 +8,7 @@ import com.example.demo.model.Task;
 
 public interface TaskRepository extends JpaRepository<Task, String> {
 
-    void updateTaskById(String id, Task task);
+    Task findByName(String name);
+
     // You can add custom queries here if needed
 }
